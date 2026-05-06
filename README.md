@@ -50,9 +50,16 @@ This setup simulates a basic enterprise logging pipeline:
 - Protocol: TCP (Port 9997)  
 - Index: index=* (lab environment)
 
+  
+  <br><br>
 ![Raw Event Log](screenshots/raw_event_log.png)
 
+<br><br>
+
+
 ---
+
+
 
 ## 🔎 Key Event Codes Monitored
 
@@ -70,9 +77,16 @@ This setup simulates a basic enterprise logging pipeline:
 
 ### 🔴 Brute Force Detection (Failed Logins)
 
+
 spl index=* sourcetype=WinEventLog:Security EventCode=4625  | stats count by Account_Name, host  | sort -count 
 
+<br><br>
+
+
 ![Brute Force Detection](screenshots/brute_force_detection.png)
+
+
+<br><br>
 
 
 💡 Insight:  
@@ -87,7 +101,11 @@ However, this dataset reveals something important:
 
 spl index=* sourcetype=WinEventLog:Security EventCode=4624 
 
+<br><br>
+
 ![Successful Logins](screenshots/successful_logins.png)
+
+<br><br>
 
 💡 Insight:  
 Successful logins provide baseline behavior, which is critical for identifying anomalies.
@@ -98,7 +116,11 @@ Successful logins provide baseline behavior, which is critical for identifying a
 
 spl index=* sourcetype=WinEventLog:Security EventCode=4672 
 
+<br><br>
+
 ![Privileged Access Detection](screenshots/privileged_access.png)
+
+<br><br>
 
 
 💡 Insight:  
@@ -160,12 +182,20 @@ As part of this project, additional detection engineering and monitoring capabil
 - Built Splunk alerts for suspicious authentication and privileged access events
 The alerts were configured with threshold-based trigger conditions and automated notification actions.
 
+<br><br>
+
 ![Alert Configuration](screenshots/alert_configuration.png)
 
+<br><br>
 
 To improve visibility and support continuous monitoring, custom Splunk dashboards were created to visualize authentication activity, failed logins, and privileged access events across monitored hosts.
 
+<br><br>
+
 ![Dashboard Screenshot](screenshots/dashboard.png)
+
+<br><br>
+
 
 - Applied filtering and tuning techniques to reduce machine/service account noise
 - Correlated Windows Security Event IDs to improve behavioral analysis
